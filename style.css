@@ -27,15 +27,16 @@
 }
 
 :root {
-	--background: #0c0424; /* Темний графіт */
-	--header: linear-gradient(-135deg, #000000, #133528, #91f9e8); /* Від чорного до вогняного */
-	--btn: #0ec043; /* Неоновий червоний */
-	--promo: rgba(9, 73, 54, 0.1);
-	--table: rgba(52, 29, 69, 0.95);
-	--white: #fef2f2;
-	--black: #0a0a0a;
+	--background: #0a0a0a;
+	--header: linear-gradient(-135deg, #000000da, #991b1be0, #ffffffd3);
+	--btn: #ef4444;
+	--promo: rgba(239, 68, 68, 0.1);
+	--table: rgba(28, 28, 30, 0.95);
+	--white: #f1f5f9;
+	--black: #020617;
 	--title: #ffffff;
-	--btn-accent: linear-gradient(135deg, #f171f8, #dc2626);
+	--btn-accent: linear-gradient(135deg, #1e40af, #ef4444);
+	--border: #1e40af;
 }
 
 * {
@@ -124,9 +125,9 @@ header {
 	align-items: center;
 	justify-content: space-between;
 	background: var(--header);
-	backdrop-filter: blur(2px);
+	backdrop-filter: blur(9px);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-	border-radius: 0 0 20px 20px;
+	border-bottom-left-radius: 20%;
 	max-width: 100vw;
 	margin: 0 auto;
 	margin-bottom: 20px;
@@ -150,7 +151,7 @@ header img {
 	padding: 10px 20px;
 	font-size: 1.2rem;
 	border: 1px solid var(--white);
-	border-radius: 0 10px;
+	border-radius: 10px 0 0 10px;
 	color: var(--white);
 	margin-right: 50px;
 }
@@ -158,10 +159,10 @@ header img {
 .green-btn {
 	padding: 12px 20px;
 	font-size: 1.2rem;
-	background-color: var(--btn);
-	color: var(--title);
-	border: 2px solid rgba(255, 255, 255, 0.8);
-	border-radius: 10px 0;
+	background-color: var(--border);
+	color: var(--white);
+	border: 2px solid var(--white);
+	border-radius: 0 10px 10px 0;
 	text-align: center;
 }
 
@@ -182,11 +183,37 @@ header img {
 	background-color: var(--promo);
 	display: flex;
 	flex-wrap: wrap;
-	backdrop-filter: blur(5px);
+	backdrop-filter: blur(9px);
 	border: 1px solid rgba(255, 255, 255, 0.3);
 	border-radius: 10px 0;
-	box-shadow: 0 0 15px var(--btn);
+	box-shadow:
+		0 0 3px #fff,
+		0 0 8px #fff,
+		0 0 15px #991b1be0,
+		0 0 30px #991b1be0;
+	animation: flicker 2.5s infinite alternate;
 	padding: 20px;
+}
+
+@keyframes flicker {
+	0%,
+	18%,
+	22%,
+	25%,
+	53%,
+	57%,
+	100% {
+		box-shadow:
+			0 0 3px #fff,
+			0 0 8px #fff,
+			0 0 15px #991b1b,
+			0 0 30px #991b1b;
+	}
+	20%,
+	24%,
+	55% {
+		box-shadow: none;
+	}
 }
 
 .txt,
